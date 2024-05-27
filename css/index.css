@@ -3753,3 +3753,6 @@ pre .coffeescript .title {
   --primary-weak: #bee2bb;
   --primary-weak-50: rgba(190, 226, 187, 0.5);
 }
+body {
+  font-family: '霞鹜文楷', 'JetBrains Mono';
+}
