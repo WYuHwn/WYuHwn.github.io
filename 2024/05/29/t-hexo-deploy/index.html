@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="将本地博客部署至阿里云服务器的操作引领">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Hexo的静态博客部署至阿里云服务器">
+<meta property="og:url" content="https://www.hoi3vel.cn/2024/05/29/t-hexo-deploy/index.html">
+<meta property="og:site_name" content="HoiYam">
+<meta property="og:description" content="将本地博客部署至阿里云服务器的操作引领">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
+<meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
+<meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
+<meta property="article:published_time" content="2024-05-29T09:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-29T13:11:40.403Z">
+<meta property="article:author" content="WvHwn">
+<meta property="article:tag" content="Cloud Server">
+<meta property="article:tag" content="Deployment">
+<meta property="article:tag" content="Blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.hoi3vel.cn/img/404.jpg">
+
+    <meta name="keywords" content="Hexo, 阿里云服务器, Git, Nginx">
+
+
+<title >基于Hexo的静态博客部署至阿里云服务器</title>
+
+<!-- Favicon -->
+
+    <link href='https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/sun_16.svg?v=2.2.0' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/sun_32.svg?v=2.2.0' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/sun.svg?v=2.2.0' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"www.hoi3vel.cn","author":"WvHwn","root":"/","typed_text":["平凡中亦有不平凡之事","心之所向，素履所往。"],"theme_version":"2.2.0","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/sun.svg","icon16":"https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/sun_16.svg","icon32":"https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/sun_32.svg","appleTouchIcon":"https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/sun.svg","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/zhifeiji.svg","showText":"(/≧▽≦/)捉！","hideText":"(T_T)不见了！","dark_logo":"https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/sun-dark.svg"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"},"creative_commons":{"license":"by-nc-sa","language":"deed.zh"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-05-29 21:11:40"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.0" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" class=" trm-light-icon" src="https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/sun.svg"> <img alt="logo" class=" trm-dark-icon" src="https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/sun-dark.svg">
+    
+    
+        <div class="trm-logo-text">
+            Hoi<span>Yam</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    HOME
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    ARCHIVES
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/categories/" target="">
+                            CAGS
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            TAGS
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/links/" target="">
+                    LINKS
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    ABOUT
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/default_banner_img.webp">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-12">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text trm-text-center ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            基于Hexo的静态博客部署至阿里云服务器
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+            <div class="trm-page-content col-lg-12">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            05/29
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            21:11
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            YuHwn
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="一、写在前面"><a href="#一、写在前面" class="headerlink" title="一、写在前面"></a>一、写在前面</h2><h3 id="1-部署方式"><a href="#1-部署方式" class="headerlink" title="1.部署方式"></a>1.部署方式</h3><p>博客部署有两种选择：</p>
+<ul>
+<li>托管至GitHub或者Gitee上: 借用Github或Gitee的这一功能部署网站，操作简单且免费。国内访问速度方面Gitee&gt;Github。</li>
+<li>部署至私有云服务器上：需要花钱购买服务器、域名，此方式自主性强且相应速度快。<br>在此文章中我将叙述如何将本地的Hexo静态博客部署至私有云服务器上。</li>
+</ul>
+<h3 id="2-相关环境"><a href="#2-相关环境" class="headerlink" title="2.相关环境"></a>2.相关环境</h3><ul>
+<li>阿里云服务器: ①CPU&amp;内存-2核(vCPU) 2GiB; ②操作系统: Ubuntu 20.04 64位; ③公网带宽: 3Mbps</li>
+<li>Nodejs版本(云服务器上):  v20.13.1</li>
+<li>Git版本(云服务器上): v2.25.1</li>
+<li>Nginx版本(云服务器上): v1.18.0(Ubuntu)</li>
+</ul>
+<h3 id="3-前置准备"><a href="#3-前置准备" class="headerlink" title="3.前置准备"></a>3.前置准备</h3><ul>
+<li>本地成功搭建Hexo博客</li>
+<li>本地成功安装了Git工具</li>
+<li>域名与云服务器公有Ip实现映射绑定</li>
+</ul>
+<h2 id="二、工作原理"><a href="#二、工作原理" class="headerlink" title="二、工作原理"></a>二、工作原理</h2><p>本地撰写的博客会保存在source目录内，当我们输入<code>hexo generate</code>命令时，Hexo将会把我们写的Markdown文件渲染成静态文件(即网页文件)，输入<code>hexo deploy</code>时，Hexo会通过我们的配置好的免密登陆连接至服务器并将生成的静态文件推送至服务器的Git仓库内。当Git仓库内容发生变更时则会触发钩子文件进而将仓库内的内容部署至网站根目录下。<br>此外我们还需要配置好Nginx服务和域名解析，这样当用户访问我们博客的域名时，域名将会被重定向为云服务的公有Ip地址并通过Nginx服务访问网站根目录里的静态文件。相关流程图如下所示:<img src="https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/tech/hexo_depoly.webp" alt="部署流程图"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h2 id="三、搭建步骤-针对云服务器"><a href="#三、搭建步骤-针对云服务器" class="headerlink" title="三、搭建步骤(针对云服务器)"></a>三、搭建步骤(针对云服务器)</h2><h3 id="1-服务端初始配置"><a href="#1-服务端初始配置" class="headerlink" title="1.服务端初始配置"></a>1.服务端初始配置</h3><ul>
+<li>前往阿里云网站的控制台，记录云服务器的公网Ip: 控制台-&gt;云服务器ESC-&gt;公网Ip</li>
+<li>设置阿里云服务器安全组：需要开放80端口(HTTP默认访问端口)、443端口(HTTPS默认访问端口)以及22端口。具体如下图:<img src="https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/tech/security_group.webp" alt="安全组图"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+<li>重置服务器登陆密码，用于远程云登陆服务器：控制台-&gt;云服务ESC-&gt;服务器实例-&gt;全部操作(右上角)-&gt;重置实例密码</li>
+</ul>
+<h3 id="2-远程登陆服务器"><a href="#2-远程登陆服务器" class="headerlink" title="2.远程登陆服务器"></a>2.远程登陆服务器</h3><ul>
+<li>打开Xshell并新建会话：①协议：SSH; ②主机: 云服务器公网Ip; ③端口号: 22</li>
+<li>点击连接：①用户名: root; ②密码: 即上述重置服务器登陆密码时输入的密码</li>
+<li>登陆成功后终端显示如下图:<img src="https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/tech/Xshell_Connect.webp" alt="Xshell_Connect"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+<h3 id="3-创建Hexo部署目录"><a href="#3-创建Hexo部署目录" class="headerlink" title="3.创建Hexo部署目录"></a>3.创建Hexo部署目录</h3><p>Hexo部署目录实质就是云服务器中存放博客的位置。使用Xshell成功连接远程服务器后输入如下命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/blog # 注意这个路径可按照自定义来</span><br></pre></td></tr></table></figure>
+<h3 id="4-安装Nodejs"><a href="#4-安装Nodejs" class="headerlink" title="4.安装Nodejs"></a>4.安装Nodejs</h3><ul>
+<li><p>在Xshell终端输入如下命令:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y curl</span><br><span class="line">curl -fsSL https://deb.nodesource.com/setup_20.x -o nodesource_setup.sh</span><br><span class="line">sudo -E bash nodesource_setup.sh</span><br><span class="line">sudo apt-get install -y nodejs</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>成功安装后依次输入命令: <code>node -v</code>和<code>npm -v</code>，若可显示相应版本号则说明安装成功<br>PS:上述命令安装的Nodejs版本为<strong>v20.13.1</strong>，如需要安装其他版本则可从<a target="_blank" rel="noopener" href="https://github.com/nodesource/distributions">NodeSource</a>安装</p>
+</li>
+</ul>
+<h3 id="5-安装Git"><a href="#5-安装Git" class="headerlink" title="5.安装Git"></a>5.安装Git</h3><ul>
+<li><p>在Xshell终端输入命令: <code>sudo apt-get install git-core</code></p>
+</li>
+<li><p>成功安装后输入命令: <code>git --version</code>，若可显示其版本号则说明安装成功</p>
+</li>
+</ul>
+<h3 id="6-安装Nginx"><a href="#6-安装Nginx" class="headerlink" title="6.安装Nginx"></a>6.安装Nginx</h3><ul>
+<li><p>在Xshell终端输入命令: <code>sudo apt install nginx -y</code></p>
+</li>
+<li><p>成功安装后输入命令: <code>nginx -v</code>，若可显示版本号则说明安装成功</p>
+</li>
+<li><p>启动Nginx服务：<code>systemctl start nginx.service</code></p>
+</li>
+<li><p>查看Nginx服务运行状态: <code>systemctl status nginx</code>，若出现<font color='green'>active</font>字样则说明Nginx服务启动成功</p>
+</li>
+</ul>
+<h3 id="7-配置Nginx"><a href="#7-配置Nginx" class="headerlink" title="7.配置Nginx"></a>7.配置Nginx</h3><ul>
+<li><p>查看<strong>nginx.conf</strong>文件位置: <code>nginx -t</code>,一般为’&#x2F;etc&#x2F;nginx&#x2F;nginx.conf’</p>
+</li>
+<li><p>修改<strong>nginx.conf</strong>文件: <code>nano /etc/nginx/nginx.conf</code>，在<strong>http</strong>模块中添加如下代码：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name 域名;</span><br><span class="line">    return 301 https://$server_name$request_uri;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line">    server_name 域名;</span><br><span class="line">    # 证书文件名称pem文件</span><br><span class="line">    ssl_certificate /xxx/xxx/域名.pem;</span><br><span class="line">    # 证书私钥文件名称key文件</span><br><span class="line">    ssl_certificate_key /xxx/xxx/域名.key;</span><br><span class="line">    # ssl验证配置 缓存有效期</span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    # 安全链接可选的加密协议</span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;</span><br><span class="line">    # 配置加密套件和/加密算法</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;</span><br><span class="line">    # 使用服务器端的首选算法</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    # 指定虚拟主机根目录</span><br><span class="line">    location / &#123;</span><br><span class="line">        root /data/blog; # root后路径为Hexo在云服务器的部署目录</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Ps: ssl证书可从域名购买平台上申请，然后下载上传至云服务器自定义位置即可</p>
+</li>
+</ul>
+<h3 id="8-添加git用户"><a href="#8-添加git用户" class="headerlink" title="8.添加git用户"></a>8.添加git用户</h3><ul>
+<li><p><strong>root</strong>用户默认的权限过大，处于安全考虑为云服务器添加名为git的用户，用于将博客自动部署至云服务器上</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd git # 添加名为git的用户</span><br><span class="line">passwd xxx # 修改git用户的密码</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为git用户授予sudo权限，执行<code>nano /etc/sudoers</code>，在<code>root ALL=(ALL:ALL) ALL</code>语句下添加<code>git ALL=(ALL:ALL) ALL</code></p>
+</li>
+</ul>
+<h3 id="9-为git用户添加SSH密钥"><a href="#9-为git用户添加SSH密钥" class="headerlink" title="9.为git用户添加SSH密钥"></a>9.为git用户添加SSH密钥</h3><p>目前为止，对git仓库进行的所有操作都需要输入密码，我们可以通过为git用户添加SSH密钥的方式来实现免密登录。原理：在本地生成一对密钥文件（分别是公钥和私钥），将公钥文件上传到服务器上；服务器收到连接请求时，会将本地的公钥与服务器的公钥进行比对，用私钥解密服务器发来的一段信息并将其发回，验证通过后准许连接。</p>
+<ul>
+<li><p>在<strong>本地计算机</strong>上打开Git Bush执行命令: <code>ssh-keygen -t rsa</code>，生成密钥对。运行完后可在’C:\Users\用户名.ssh’文件下找到’id_rsa’和’id_rsa.pub’文件，前者为私钥文件，后者为公钥文件</p>
+</li>
+<li><p>在Xshell终端先执行<code>makdir -p /home/git/.ssh</code>，后执行<code>cd /home/git/.ssh</code>以及<code>nano authorized_keys</code>，输入内容为**’id_rsa.pub’**文件内容</p>
+</li>
+<li><p>在Xshell终端中执行如下代码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su root # 从git用户更换至root用户</span><br><span class="line">chmod 600 /home/git/.ssh/authorized_keys</span><br><span class="line">chmod 700 /home/git/.ssh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将.ssh文件夹及其内的所有文件所有权转交给git用户: <code>chown -R git:git /home/git/.ssh</code></p>
+</li>
+<li><p>在<strong>本地计算机</strong>测试是否可以用ssh免密登录服务器，在Git Bash中执行<code>ssh -v git@xxx.xxx.xxx.xxx</code>(Ps:git@后填写服务器的公网Ip) ,若成功则会出现’Welcome to Alibaba Cloud Elastic Compute Service !’提示语。</p>
+</li>
+</ul>
+<h3 id="10-创建Git仓库并配置自动部署"><a href="#10-创建Git仓库并配置自动部署" class="headerlink" title="10.创建Git仓库并配置自动部署"></a>10.创建Git仓库并配置自动部署</h3><p>这里的Git仓库（repository）可以理解为一个存放着不同版本代码的代码库，包含了项目所有的源文件和版本控制信息。但我们在这里需要用到的是裸库，即仅包含版本控制信息的仓库。后者不保存文件，常用作服务器仓库，实现数据共享和同步。自动部署的核心在于git-hooks（钩子），可以理解为一种脚本，在特定条件下触发时会调用钩子并执行钩子文件中的内容。</p>
+<ul>
+<li><p>Xshell切换到<strong>root</strong>用户，新建目录并在该目录下创建Git仓库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /home/git</span><br><span class="line">git init --bare blog.git # 创建一个名为blog的仓库，--bare参数为创建裸库</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开’&#x2F;home&#x2F;git&#x2F;blog.git&#x2F;hooks’目录下的<strong>post-receive</strong>钩子文件(若无则新建)，往其添加内容<code>git --work-tree=/data/blog --git-dir=/home/git/blog.git checkout -f</code>。(Ps:work-tree填写Hexo部署目录，git-dir填写Git仓库的目录)</p>
+</li>
+<li><p>为钩子文件及Git仓库目录配置权限。这里需要将我们创建的仓库及部署目录的所有权移交给git用户，因为Linux下创建文件时默认只有拥有者（即创建者）才具有读写权限，而Git进行push操作时登录的用户为git用户。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /home/git/blog.git/hooks/post-receive     #为钩子文件授予可执行权限（+x）</span><br><span class="line">chown -R git:git /home/git    #将仓库目录的所有权移交给git用户</span><br><span class="line">chown -R git:git /data/blog     #将Hexo部署目录的所有权移交给git用户</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="11-在本地计算机中更改本地博客部署路径"><a href="#11-在本地计算机中更改本地博客部署路径" class="headerlink" title="11.在本地计算机中更改本地博客部署路径"></a>11.在本地计算机中更改本地博客部署路径</h3><ul>
+<li><p>打开本地计算机的Hexo文件夹，在<strong>_config.yml</strong>文件中找到deploy语句并进行如下修改：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repository: git@xxx.xxx.xxx.xxx:/home/git/blog.git # git@云服务器公网Ip:云服务器Git仓库地址</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>依次执行命令<code>hexo clean</code>、<code>hexo generate</code>、<code>hexo deploy</code>并对云服务器’&#x2F;data&#x2F;blog’目录刷新，若有文件出现(该目录原为空目录)则说明博客已成功部署至云服务器上，至此可以在浏览器中输入域名来访问博客站点。(Ps：若域名未与公网Ip绑定&lt;即域名解析&gt;，则无法实现输入域名访问博客站点)</p>
+</li>
+</ul>
+
+</article>
+    
+    
+
+<ul class="trm-post-copyright">
+    <li class="trm-post-copyright-author">
+        <strong>本文作者：</strong>
+        YuHwn
+    </li>
+    <li class="trm-post-copyright-link">
+        <strong>本文链接：</strong>
+        <a id="original-link" href="https://www.hoi3vel.cn/2024/05/29/t-hexo-deploy/" title="基于Hexo的静态博客部署至阿里云服务器">https://www.hoi3vel.cn/2024/05/29/t-hexo-deploy/</a>
+    </li>
+    <li class="trm-post-copyright-license">
+        <strong>版权声明：</strong>
+        本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 ">CC BY-NC-SA 4.0</a> 许可协议。
+    </li>
+</ul>
+
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/05/28/hello-world1/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Life/">
+                    Life
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/05/28/hello-world1/" class="trm-anima-link">
+                    Hello World1
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/05/28</li>
+                <li>17:29</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2024- 2024</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">YuHwn</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v7.2.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.0
+            </span>
+        </div>
+      
+
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="搜索文章...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    请输入关键词进行搜索
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.0"></script>
+    
+
+    
+        
+<script src="https://unpkg.com/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="/js/plugins/local_search.js?v=2.2.0"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.0"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
