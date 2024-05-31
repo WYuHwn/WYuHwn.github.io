@@ -3954,6 +3954,19 @@ pre .coffeescript .title {
 body {
   font-family: '霞鹜文楷', 'JetBrains Mono';
 }
+.trm-top-bar,
+.trm-main-card,
+.trm-blog-card,
+.trm-timeline-content,
+.trm-blog-categories,
+footer {
+  background-image: url(https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/bg.png);
+}
+.trm-read-mode .trm-card,
+.trm-read-mode .trm-app-frame,
+.trm-read-mode .trm-banner .trm-banner-content.trm-overlay .trm-banner-text h1 {
+  background-image: url(https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/texture.png);
+}
 .trm-menu nav ul li ul {
   padding: 10px;
   pointer-events: none;
@@ -3970,17 +3983,4 @@ body {
   display: flex;
   flex-direction: column;
   transition: all 0.4s ease-in-out;
-}
-.trm-top-bar,
-.trm-main-card,
-.trm-blog-card,
-.trm-timeline-content,
-.trm-blog-categories,
-footer {
-  background-image: url(https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/bg.png);
-}
-.trm-read-mode .trm-card,
-.trm-read-mode .trm-app-frame,
-.trm-read-mode .trm-banner .trm-banner-content.trm-overlay .trm-banner-text h1 {
-  background-image: url(https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/texture.png);
 }
