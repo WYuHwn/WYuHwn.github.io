@@ -910,7 +910,7 @@ html.is-animating .trm-swup-animation {
   transform: translateY(20px);
   height: auto;
   top: 80px;
-  left: 7px;
+  left: -10px;
   border-radius: 0 0 10px 10px;
   box-shadow: var(--box-shadow);
   position: absolute;
@@ -3966,4 +3966,7 @@ footer {
 .trm-read-mode .trm-app-frame,
 .trm-read-mode .trm-banner .trm-banner-content.trm-overlay .trm-banner-text h1 {
   background-image: url(https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/texture.png);
+}
+.trm-menu nav ul li ul {
+  left: 7px;
 }
