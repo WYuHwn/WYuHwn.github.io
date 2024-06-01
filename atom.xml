@@ -6,7 +6,7 @@
   <link href="https://www.hoi3vel.cn/atom.xml" rel="self"/>
   
   <link href="https://www.hoi3vel.cn/"/>
-  <updated>2024-06-01T09:32:59.459Z</updated>
+  <updated>2024-05-31T15:00:00.000Z</updated>
   <id>https://www.hoi3vel.cn/</id>
   
   <author>
@@ -20,8 +20,8 @@
     <title>Hexo博客引入Giscus评论系统</title>
     <link href="https://www.hoi3vel.cn/2024/05/31/t-comment-deploy/"/>
     <id>https://www.hoi3vel.cn/2024/05/31/t-comment-deploy/</id>
-    <published>2024-05-31T14:07:57.986Z</published>
-    <updated>2024-06-01T09:32:59.459Z</updated>
+    <published>2024-05-31T14:13:00.000Z</published>
+    <updated>2024-05-31T15:00:00.000Z</updated>
     
     
     <summary type="html">将Giscus评论系统嵌入至Hexo博客的操作要领</summary>
@@ -46,7 +46,7 @@
     <link href="https://www.hoi3vel.cn/2024/05/29/t-hexo-deploy/"/>
     <id>https://www.hoi3vel.cn/2024/05/29/t-hexo-deploy/</id>
     <published>2024-05-29T09:00:00.000Z</published>
-    <updated>2024-06-01T09:33:05.897Z</updated>
+    <updated>2024-05-30T03:46:00.000Z</updated>
     
     
     <summary type="html">将本地博客部署至阿里云服务器的操作引领</summary>
