@@ -6,7 +6,7 @@
   <link href="https://www.hoi3vel.cn/atom.xml" rel="self"/>
   
   <link href="https://www.hoi3vel.cn/"/>
-  <updated>2024-05-31T03:46:44.211Z</updated>
+  <updated>2024-06-01T09:32:59.459Z</updated>
   <id>https://www.hoi3vel.cn/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hexo博客引入Giscus评论系统</title>
+    <link href="https://www.hoi3vel.cn/2024/05/31/t-comment-deploy/"/>
+    <id>https://www.hoi3vel.cn/2024/05/31/t-comment-deploy/</id>
+    <published>2024-05-31T14:07:57.986Z</published>
+    <updated>2024-06-01T09:32:59.459Z</updated>
+    
+    
+    <summary type="html">将Giscus评论系统嵌入至Hexo博客的操作要领</summary>
+    
+    
+    
+    <category term="Tech" scheme="https://www.hoi3vel.cn/categories/Tech/"/>
+    
+    
+    <category term="Giscus" scheme="https://www.hoi3vel.cn/tags/Giscus/"/>
+    
+    <category term="Deployment" scheme="https://www.hoi3vel.cn/tags/Deployment/"/>
+    
+    <category term="Hexo" scheme="https://www.hoi3vel.cn/tags/Hexo/"/>
+    
+    <category term="Guidance" scheme="https://www.hoi3vel.cn/tags/Guidance/"/>
+    
+  </entry>
+  
+  <entry>
     <title>基于Hexo的静态博客部署至阿里云服务器</title>
     <link href="https://www.hoi3vel.cn/2024/05/29/t-hexo-deploy/"/>
     <id>https://www.hoi3vel.cn/2024/05/29/t-hexo-deploy/</id>
     <published>2024-05-29T09:00:00.000Z</published>
-    <updated>2024-05-31T03:46:44.211Z</updated>
+    <updated>2024-06-01T09:33:05.897Z</updated>
     
     
     <summary type="html">将本地博客部署至阿里云服务器的操作引领</summary>
@@ -31,11 +56,13 @@
     <category term="Tech" scheme="https://www.hoi3vel.cn/categories/Tech/"/>
     
     
-    <category term="Blog" scheme="https://www.hoi3vel.cn/tags/Blog/"/>
+    <category term="Deployment" scheme="https://www.hoi3vel.cn/tags/Deployment/"/>
+    
+    <category term="Hexo" scheme="https://www.hoi3vel.cn/tags/Hexo/"/>
+    
+    <category term="Guidance" scheme="https://www.hoi3vel.cn/tags/Guidance/"/>
     
     <category term="Cloud Server" scheme="https://www.hoi3vel.cn/tags/Cloud-Server/"/>
-    
-    <category term="Deployment" scheme="https://www.hoi3vel.cn/tags/Deployment/"/>
     
   </entry>
   
