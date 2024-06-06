@@ -34,10 +34,10 @@
 <li>安装<a href="https://github.com/apps/giscus">Giscus</a></li>
 <li>开启作为存储Discussions仓库的Discussions功能: 选择GIthub仓库-&gt;Settings-&gt;Features模块中勾选Discussions</li>
 </ul>
-<h2 id="2-配置Giscus"><a href="#2-配置Giscus" class="headerlink" title="2.配置Giscus"></a>2.配置Giscus</h2><p>上述操作完成后，进入<a href="https://giscus.app/zh-CN">Giscus官网</a>获取配置信息，填写完<strong>仓库</strong>和<strong>分类</strong>后就可在显示配置信息，生成的配置信息样例如下:<img src="https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/tech/giscus_deploy.webp" alt="giscus配置信息样例"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>分类可以选择<code>Announcements</code>、<code>Q&amp;A</code>等，不一定按照推荐选择分类。</p>
+<h2 id="2-配置Giscus"><a href="#2-配置Giscus" class="headerlink" title="2.配置Giscus"></a>2.配置Giscus</h2><p>上述操作完成后，进入<a href="https://giscus.app/zh-CN">Giscus官网</a>获取配置信息，填写完<strong>仓库</strong>和<strong>分类</strong>后就可在显示配置信息，生成的配置信息样例如下:<img src="https://img.hoi3vel.cn/tech/giscus_deploy.webp" alt="giscus配置信息样例"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>分类可以选择<code>Announcements</code>、<code>Q&amp;A</code>等，不一定按照推荐选择分类。</p>
 <p>在此配置信息中我们只需关注<strong>data-repo</strong>、<strong>data-repo-id</strong>、<strong>data-categories</strong>、<strong>data-category-id</strong>这些信息。</p>
-<h2 id="3-引入至博客"><a href="#3-引入至博客" class="headerlink" title="3.引入至博客"></a>3.引入至博客</h2><p>在<code>_config.async.yml</code>中配置如下:<img src="https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/tech/hexo_giscus.webp" alt="Hexo配置文件"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'>。图中打码部分为专属配置信息，其中theme主题可自己更改，可供选择主题可在<a href="https://giscus.app/zh-CN">Giscus官网</a>查看。</p>
-<h2 id="4-效果视图"><a href="#4-效果视图" class="headerlink" title="4.效果视图"></a>4.效果视图</h2><p>白天模式下:<img src="https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/tech/giscus_example.webp" alt="giscus_exmaple"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>黑夜模式下:<img src="https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/tech/giscus_example_dark.webp" alt="giscus_example_dark"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>评论的管理可在Github中对应仓库的<strong>Discussions</strong>中实现</p>
+<h2 id="3-引入至博客"><a href="#3-引入至博客" class="headerlink" title="3.引入至博客"></a>3.引入至博客</h2><p>在<code>_config.async.yml</code>中配置如下:<img src="https://img.hoi3vel.cn/tech/hexo_giscus.webp" alt="Hexo配置文件"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'>。图中打码部分为专属配置信息，其中theme主题可自己更改，可供选择主题可在<a href="https://giscus.app/zh-CN">Giscus官网</a>查看。</p>
+<h2 id="4-效果视图"><a href="#4-效果视图" class="headerlink" title="4.效果视图"></a>4.效果视图</h2><p>白天模式下:<img src="https://img.hoi3vel.cn/tech/giscus_example.webp" alt="giscus_exmaple"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>黑夜模式下:<img src="https://img.hoi3vel.cn/tech/giscus_example_dark.webp" alt="giscus_example_dark"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>评论的管理可在Github中对应仓库的<strong>Discussions</strong>中实现</p>
 ]]></content>
       <categories>
         <category>Tech</category>
@@ -73,16 +73,16 @@
 <li>本地成功安装了Git工具</li>
 <li>域名与云服务器公有Ip实现映射绑定</li>
 </ul>
-<h2 id="二、工作原理"><a href="#二、工作原理" class="headerlink" title="二、工作原理"></a>二、工作原理</h2><p>本地撰写的博客会保存在source目录内，当我们输入<code>hexo generate</code>命令时，Hexo将会把我们写的Markdown文件渲染成静态文件(即网页文件)，输入<code>hexo deploy</code>时，Hexo会通过我们的配置好的免密登陆连接至服务器并将生成的静态文件推送至服务器的Git仓库内。当Git仓库内容发生变更时则会触发钩子文件进而将仓库内的内容部署至网站根目录下。<br>此外我们还需要配置好Nginx服务和域名解析，这样当用户访问我们博客的域名时，域名将会被重定向为云服务的公有Ip地址并通过Nginx服务访问网站根目录里的静态文件。相关流程图如下所示:<img src="https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/tech/hexo_depoly.webp" alt="部署流程图"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h2 id="二、工作原理"><a href="#二、工作原理" class="headerlink" title="二、工作原理"></a>二、工作原理</h2><p>本地撰写的博客会保存在source目录内，当我们输入<code>hexo generate</code>命令时，Hexo将会把我们写的Markdown文件渲染成静态文件(即网页文件)，输入<code>hexo deploy</code>时，Hexo会通过我们的配置好的免密登陆连接至服务器并将生成的静态文件推送至服务器的Git仓库内。当Git仓库内容发生变更时则会触发钩子文件进而将仓库内的内容部署至网站根目录下。<br>此外我们还需要配置好Nginx服务和域名解析，这样当用户访问我们博客的域名时，域名将会被重定向为云服务的公有Ip地址并通过Nginx服务访问网站根目录里的静态文件。相关流程图如下所示:<img src="https://img.hoi3vel.cn/tech/hexo_depoly.webp" alt="部署流程图"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
 <h2 id="三、搭建步骤-针对云服务器"><a href="#三、搭建步骤-针对云服务器" class="headerlink" title="三、搭建步骤(针对云服务器)"></a>三、搭建步骤(针对云服务器)</h2><h3 id="1-服务端初始配置"><a href="#1-服务端初始配置" class="headerlink" title="1.服务端初始配置"></a>1.服务端初始配置</h3><ul>
 <li>前往阿里云网站的控制台，记录云服务器的公网Ip: 控制台-&gt;云服务器ESC-&gt;公网Ip</li>
-<li>设置阿里云服务器安全组：需要开放80端口(HTTP默认访问端口)、443端口(HTTPS默认访问端口)以及22端口。具体如下图:<img src="https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/tech/security_group.webp" alt="安全组图"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+<li>设置阿里云服务器安全组：需要开放80端口(HTTP默认访问端口)、443端口(HTTPS默认访问端口)以及22端口。具体如下图:<img src="https://img.hoi3vel.cn/tech/security_group.webp" alt="安全组图"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
 <li>重置服务器登陆密码，用于远程云登陆服务器：控制台-&gt;云服务ESC-&gt;服务器实例-&gt;全部操作(右上角)-&gt;重置实例密码</li>
 </ul>
 <h3 id="2-远程登陆服务器"><a href="#2-远程登陆服务器" class="headerlink" title="2.远程登陆服务器"></a>2.远程登陆服务器</h3><ul>
 <li>打开Xshell并新建会话：①协议：SSH; ②主机: 云服务器公网Ip; ③端口号: 22</li>
 <li>点击连接：①用户名: root; ②密码: 即上述重置服务器登陆密码时输入的密码</li>
-<li>登陆成功后终端显示如下图:<img src="https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/tech/Xshell_Connect.webp" alt="Xshell_Connect"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+<li>登陆成功后终端显示如下图:<img src="https://img.hoi3vel.cn/tech/Xshell_Connect.webp" alt="Xshell_Connect"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
 </ul>
 <h3 id="3-创建Hexo部署目录"><a href="#3-创建Hexo部署目录" class="headerlink" title="3.创建Hexo部署目录"></a>3.创建Hexo部署目录</h3><p>Hexo部署目录实质就是云服务器中存放博客的位置。使用Xshell成功连接远程服务器后输入如下命令:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p /data/blog # 注意这个路径可按照自定义来</span><br></pre></td></tr></table></figure>

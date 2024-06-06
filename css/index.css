@@ -3960,12 +3960,12 @@ body {
 .trm-timeline-content,
 .trm-blog-categories,
 footer {
-  background-image: url(https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/bg.png);
+  background-image: url(https://img.hoi3vel.cn/config/bg.png);
 }
 .trm-read-mode .trm-card,
 .trm-read-mode .trm-app-frame,
 .trm-read-mode .trm-banner .trm-banner-content.trm-overlay .trm-banner-text h1 {
-  background-image: url(https://cdn.jsdelivr.net/gh/WYuHwn/yam-images@main/texture.png);
+  background-image: url(https://img.hoi3vel.cn/config/texture.png);
 }
 .trm-menu nav ul li ul {
   left: 7px;
