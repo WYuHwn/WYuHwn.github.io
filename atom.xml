@@ -31,13 +31,13 @@
     <category term="Tech" scheme="https://www.hoi3vel.cn/categories/Tech/"/>
     
     
-    <category term="Giscus" scheme="https://www.hoi3vel.cn/tags/Giscus/"/>
-    
     <category term="Deployment" scheme="https://www.hoi3vel.cn/tags/Deployment/"/>
     
     <category term="Hexo" scheme="https://www.hoi3vel.cn/tags/Hexo/"/>
     
     <category term="Guidance" scheme="https://www.hoi3vel.cn/tags/Guidance/"/>
+    
+    <category term="Giscus" scheme="https://www.hoi3vel.cn/tags/Giscus/"/>
     
   </entry>
   
@@ -56,13 +56,13 @@
     <category term="Tech" scheme="https://www.hoi3vel.cn/categories/Tech/"/>
     
     
+    <category term="Cloud Server" scheme="https://www.hoi3vel.cn/tags/Cloud-Server/"/>
+    
     <category term="Deployment" scheme="https://www.hoi3vel.cn/tags/Deployment/"/>
     
     <category term="Hexo" scheme="https://www.hoi3vel.cn/tags/Hexo/"/>
     
     <category term="Guidance" scheme="https://www.hoi3vel.cn/tags/Guidance/"/>
-    
-    <category term="Cloud Server" scheme="https://www.hoi3vel.cn/tags/Cloud-Server/"/>
     
   </entry>
   
