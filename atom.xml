@@ -6,7 +6,7 @@
   <link href="https://www.hoi3vel.cn/atom.xml" rel="self"/>
   
   <link href="https://www.hoi3vel.cn/"/>
-  <updated>2024-05-31T15:00:00.000Z</updated>
+  <updated>2024-07-06T06:46:00.000Z</updated>
   <id>https://www.hoi3vel.cn/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>最长公共子串和最长公共子序列</title>
+    <link href="https://www.hoi3vel.cn/2024/07/06/t-dynamic-programming1/"/>
+    <id>https://www.hoi3vel.cn/2024/07/06/t-dynamic-programming1/</id>
+    <published>2024-07-06T05:00:00.000Z</published>
+    <updated>2024-07-06T06:46:00.000Z</updated>
+    
+    
+    <summary type="html">使用动态规划方法解决最长公共子串问题和最长公共子序列问题</summary>
+    
+    
+    
+    <category term="Tech" scheme="https://www.hoi3vel.cn/categories/Tech/"/>
+    
+    
+    <category term="Algorithm" scheme="https://www.hoi3vel.cn/tags/Algorithm/"/>
+    
+    <category term="Dynamic Prgromming" scheme="https://www.hoi3vel.cn/tags/Dynamic-Prgromming/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo博客引入Giscus评论系统</title>

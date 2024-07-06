@@ -7,31 +7,37 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="将Giscus评论系统嵌入至Hexo博客的操作要领">
+<meta name="description" content="使用动态规划方法解决最长公共子串问题和最长公共子序列问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo博客引入Giscus评论系统">
-<meta property="og:url" content="https://www.hoi3vel.cn/2024/05/31/t-comment-deploy/index.html">
+<meta property="og:title" content="最长公共子串和最长公共子序列">
+<meta property="og:url" content="https://www.hoi3vel.cn/2024/07/06/t-dynamic-programming1/index.html">
 <meta property="og:site_name" content="HoiYam">
-<meta property="og:description" content="将Giscus评论系统嵌入至Hexo博客的操作要领">
+<meta property="og:description" content="使用动态规划方法解决最长公共子串问题和最长公共子序列问题">
 <meta property="og:locale">
 <meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
 <meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
 <meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
 <meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
-<meta property="article:published_time" content="2024-05-31T14:13:00.000Z">
-<meta property="article:modified_time" content="2024-05-31T15:00:00.000Z">
+<meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
+<meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
+<meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
+<meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
+<meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
+<meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
+<meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
+<meta property="og:image" content="https://www.hoi3vel.cn/img/404.jpg">
+<meta property="article:published_time" content="2024-07-06T05:00:00.000Z">
+<meta property="article:modified_time" content="2024-07-06T06:46:00.000Z">
 <meta property="article:author" content="WvHwn">
-<meta property="article:tag" content="Giscus">
-<meta property="article:tag" content="Deployment">
-<meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="Guidance">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="Dynamic Prgromming">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.hoi3vel.cn/img/404.jpg">
 
-    <meta name="keywords" content="Giscus, 评论, Hexo">
+    <meta name="keywords" content="动态规划, 最长公共子串, 最长公共子序列, C, C++">
 
 
-<title >Hexo博客引入Giscus评论系统</title>
+<title >最长公共子串和最长公共子序列</title>
 
 <!-- Favicon -->
 
@@ -74,7 +80,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"www.hoi3vel.cn","author":"WvHwn","root":"/","typed_text":["纸上得来终觉浅，绝知此事要躬行。","心之所向，素履所往。"],"theme_version":"2.2.0","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"https://img.hoi3vel.cn/config/sun.svg","icon16":"https://img.hoi3vel.cn/config/sun_16.svg","icon32":"https://img.hoi3vel.cn/config/sun_32.svg","appleTouchIcon":"https://img.hoi3vel.cn/config/sun.svg","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"https://img.hoi3vel.cn/config/zhifeiji.svg","showText":"(/≧▽≦/)捉！","hideText":"(T_T)不见了！","dark_logo":"https://img.hoi3vel.cn/config/sun-dark.svg"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-05-31 23:00:00"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-07-06 14:46:00"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.0" id="trm-switch-style">
@@ -257,7 +263,7 @@
                             NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            Hexo博客引入Giscus评论系统
+                            最长公共子串和最长公共子序列
                         </h1>
 
                         
@@ -298,13 +304,13 @@
     <div class="col-sm-4">
         <div class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
-            05/31
+            07/06
         </div>
     </div>
     <div class="col-sm-4">
         <div class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-clock trm-icon"></i><br>
-            23:00
+            14:46
         </div>
     </div>
     <div class="col-sm-4">
@@ -317,21 +323,34 @@
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
     <blockquote>
-<p>其实将Giscus评论系统引入Hexo博客中操作很简单，但是想到自己一开始看着<a target="_blank" rel="noopener" href="https://hexo-theme-async.imalun.com/guide/config">Hexo-Theme-Async</a>文档所介绍的操作依然不知所措的场景，最后还是决定写篇文章讲讲具体的流程。</p>
+<p>自己在刷LeetCode时遇见了最长公共子串这个题目，传统的编程思想使我对此题无从下手，后面查阅资料后了解到<strong>动态规划</strong>这一思想，因此便写下文章，记录如何使用<strong>动态规划</strong>解决最长公共子串和最长公共子序列问题。</p>
 </blockquote>
 <span id="more"></span>
-<h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>Giscus是由<a target="_blank" rel="noopener" href="https://docs.github.com/en/discussions">Github Discussions</a>实现的评论系统，它主要有三个优点：①开源；②无跟踪、无广告且永久免费；③无需数据库，所有数据均存储在Github Discussions中。</p>
-<h2 id="1-工作原理"><a href="#1-工作原理" class="headerlink" title="1.工作原理"></a>1.工作原理</h2><p>Gicsus使用Github Discussions作为数据库存储博客下面的评论。Giscus插件加载时会使用Github Discussions搜索API根据选定的映射方式(如URL、Pathname等)来查找与当前页面关联的discussion。若找不到匹配的discussion，Giscus bot就会在第一次有人留下评论或回应时自动创建一个discussion。访客通过登录Github账号在博客页面进行留言，而作者可以在Github对应仓库上管理评论。</p>
-<h1 id="二、具体流程"><a href="#二、具体流程" class="headerlink" title="二、具体流程"></a>二、具体流程</h1><h2 id="1-引入Giscus"><a href="#1-引入Giscus" class="headerlink" title="1.引入Giscus"></a>1.引入Giscus</h2><p>Hexo主题<a target="_blank" rel="noopener" href="https://hexo-theme-async.imalun.com/">Hexo-Theme-Async</a>支持Giscuss评论，因此引入步骤很简单，具体流程如下:</p>
+
+<h2 id="一、写在前面"><a href="#一、写在前面" class="headerlink" title="一、写在前面"></a>一、写在前面</h2><p>当自己在网上搜什么是<strong>动态规划</strong>时，许许多多晦涩难懂的专业术语映入眼帘，令人望而生畏。然而动态规划遵循着一套固定的流程：递归的暴力解法-&gt;带备忘录的递归解法-&gt;非递归的动态规划解法。那么什么是动态规划呢？针对一个问题，我们把这个问题拆分成一个个子问题，然后将每个子问题的最优解记录下来(即”备忘录”)，相邻子问题之间层层递进，再根据子问题答案进行反推，最终得出原问题的最优解，这便是<strong>动态规划</strong>。简单一句话就是，<strong>拆分子问题，记住过往，减少重复计算</strong>。</p>
+<h2 id="二、最长公共子串"><a href="#二、最长公共子串" class="headerlink" title="二、最长公共子串"></a>二、最长公共子串</h2><h3 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h3><p>给出两个字符串a和b的最长连续公共子串的长度。例如“abcbcde”和“bbcbce”的最长连续公共子串是“bcbc”，长度为4。</p>
+<h3 id="2-思路解析"><a href="#2-思路解析" class="headerlink" title="2.思路解析"></a>2.思路解析</h3><p>假设字符串a和b的长度分别是m和n，绘制一张m×n的二维表格<strong>table[m][n]</strong>。取字符串a和b的字符前缀a’和b’，表格位置i，j上的数字含义是: 字符串a’和b’的且以它们尾巴字符结尾的最长公共子串的长度。<br><img src="https://img.hoi3vel.cn/tech/max_common_length_1.webp" alt="table表_1"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>假设已经知道i-1和j-1处的数值，考虑i，j的数值：</p>
 <ul>
-<li>在Github上选择一个仓库作为存储Discussions的仓库，一般选择博客本身所在的仓库(e.g.Github用户名&#x2F;Github用户名.github.io)，当然也可以新建一个仓库。</li>
-<li>安装<a target="_blank" rel="noopener" href="https://github.com/apps/giscus">Giscus</a></li>
-<li>开启作为存储Discussions仓库的Discussions功能: 选择GIthub仓库-&gt;Settings-&gt;Features模块中勾选Discussions</li>
+<li>如果新的<strong>a[i]</strong>和<strong>b[j]</strong>相等，则最长公共子串得到扩展，因此数值+1。</li>
+<li>否则以两个字符为尾巴的最长公共子串不复存在，因此数值<strong>清零</strong>。<br>下图中左右示例对应上述两种情况：<br><img src="https://img.hoi3vel.cn/tech/max_common_length_2.webp" alt="动态规划过程图"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>于是得到填表规律：</li>
+<li>如果当前格子对应的两个字符不同，则写0。</li>
+<li>否则采用斜上方的格子的数值+1<br><img src="https://img.hoi3vel.cn/tech/max_common_length_3.webp" alt="填表规律图"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>用代码描述这个填表规则：</li>
+<li>若<strong>a[i]</strong>!&#x3D;<strong>b[j]</strong>，则填写<strong>table[i][j]</strong>&#x3D;0</li>
+<li>否则，填写<strong>table[i][j]</strong>&#x3D;<strong>table[i-1][j-1]</strong>+1<br>表格中的最大值即为最长公共子串的长度，时间复杂度为O(m*n)。</li>
 </ul>
-<h2 id="2-配置Giscus"><a href="#2-配置Giscus" class="headerlink" title="2.配置Giscus"></a>2.配置Giscus</h2><p>上述操作完成后，进入<a target="_blank" rel="noopener" href="https://giscus.app/zh-CN">Giscus官网</a>获取配置信息，填写完<strong>仓库</strong>和<strong>分类</strong>后就可在显示配置信息，生成的配置信息样例如下:<img src="https://img.hoi3vel.cn/tech/giscus_deploy.webp" alt="giscus配置信息样例"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>分类可以选择<code>Announcements</code>、<code>Q&amp;A</code>等，不一定按照推荐选择分类。</p>
-<p>在此配置信息中我们只需关注<strong>data-repo</strong>、<strong>data-repo-id</strong>、<strong>data-categories</strong>、<strong>data-category-id</strong>这些信息。</p>
-<h2 id="3-引入至博客"><a href="#3-引入至博客" class="headerlink" title="3.引入至博客"></a>3.引入至博客</h2><p>在<code>_config.async.yml</code>中配置如下:<img src="https://img.hoi3vel.cn/tech/hexo_giscus.webp" alt="Hexo配置文件"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>图中打码部分为专属配置信息，其中theme主题可自己更改，可供选择主题可在<a target="_blank" rel="noopener" href="https://giscus.app/zh-CN">Giscus官网</a>查看。</p>
-<h2 id="4-效果视图"><a href="#4-效果视图" class="headerlink" title="4.效果视图"></a>4.效果视图</h2><p>白天模式下:<img src="https://img.hoi3vel.cn/tech/giscus_example.webp" alt="giscus_exmaple"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>黑夜模式下:<img src="https://img.hoi3vel.cn/tech/giscus_example_dark.webp" alt="giscus_example_dark"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>评论的管理可在Github中对应仓库的<strong>Discussions</strong>中实现</p>
+<h3 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回字符串 a 和 b 的最长公共子串的长度</span></span><br><span class="line"><span class="comment">// 例如 &quot;abcdbcdef&quot; 和 &quot;bbcbbcdee&quot; 的公共字符串是 &quot;bcde&quot; 长度是 4</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">LongestCommonSubstring</span><span class="params">(<span class="type">char</span> *a, <span class="type">int</span> a_length, <span class="type">char</span> *b, <span class="type">int</span> b_length)</span> &#123;</span><br><span class="line">    <span class="type">int</span> table[a_length][b_length];</span><br><span class="line">    <span class="type">int</span> max = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; a_length; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; b_length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[i] == b[j]) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i &gt;= <span class="number">1</span> &amp;&amp; j &gt;= <span class="number">1</span>)</span><br><span class="line">                    table[i][j] = table[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    table[i][j] = <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                table[i][j] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (table[i][j] &gt; max) &#123;</span><br><span class="line">                max = table[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、最长公共子序列"><a href="#三、最长公共子序列" class="headerlink" title="三、最长公共子序列"></a>三、最长公共子序列</h2><h3 id="1-题目描述-1"><a href="#1-题目描述-1" class="headerlink" title="1.题目描述"></a>1.题目描述</h3><p>给出两个字符串a和b的最长公共子序列的长度。其和公共子串不同的是，公共子序列不要求连续。最长公共子序列是非常经典的动态规划问题，简称LCS问题。例如“abcbcde”和“acabdef”的最长公共子序列是“acbde”，长度为5。<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-common-subsequence/description/">LeetCodet题目-最长公共子序列</a></p>
+<h3 id="2-思路解析-1"><a href="#2-思路解析-1" class="headerlink" title="2.思路解析"></a>2.思路解析</h3><p>如果两个字符串的尾位置分别是i和j，假设它们的最长公共子序列的长度是函数<strong>f(i, j)</strong>:<img src="https://img.hoi3vel.cn/tech/max_common_list_1.webp" alt="最长公共子序列函数"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>考虑函数的递推关系：</p>
+<ul>
+<li>如果两个字符串的尾字符相同，易知<strong>f(i, j)&#x3D;f(i-1, j-1)+1</strong>:<img src="https://img.hoi3vel.cn/tech/max_common_list_2.webp" alt="两字符串尾字符相同序列函数变化"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+<li>如果尾字符不同，上述递推关系则不成立:<img src="https://img.hoi3vel.cn/tech/max_common_list_3.webp" alt="两字符串尾字符不同序列函数变化"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>原因在于，虽然尾字符不同，但一个字符串的尾字符可能和另一个字符串的前面的某个字符相同，导致最长公共子序列得到扩展。<img src="https://img.hoi3vel.cn/tech/max_common_list_4.webp" alt="尾字符与非尾字符对应"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>注意，上图的关系可以进一步表达为：<img src="https://img.hoi3vel.cn/tech/max_common_list_5.webp" alt="尾字符与非尾字符对应进阶"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>考虑其一般性，取<strong>f(i-1, j)和f(i, j-1)的最大值</strong>:<img src="https://img.hoi3vel.cn/tech/max_common_list_6.webp" alt="尾字符与非尾字符一般性"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>假设字符串a和b的长度分别是m和n，绘制一张m×n的二维表格<strong>table[m][n]</strong>。取字符串a和b的前缀字符串“a’”和“b’”，表格位置i，j上的数字含义为f(i，j)即字符串a’和b’的最长公共子序列的长度。<img src="https://img.hoi3vel.cn/tech/max_common_list_7.webp" alt="table表_2"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>利用已分析的递推关系，表格填写规则如下：</li>
+<li>如果字符<strong>a[i]</strong>和<strong>b[j]</strong>相同，则最长公共子序列得到扩展，数值+1</li>
+<li>否则，采用左边的和上面的方格中的数值的最大值<br><img src="https://img.hoi3vel.cn/tech/max_common_list_8.webp" alt="table表_2计算规则"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>按照上述规律，字符串“abcbcde”和“acabdef”的填表过程如下：<img src="https://img.hoi3vel.cn/tech/max_common_list_9.webp" alt="table表_2填写过程"  data-tag='post-image' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>上述规则映射至代码为：</li>
+<li>若<strong>a[i]&#x3D;&#x3D;b[j]</strong>，则填写<strong>table[i][j]&#x3D;table[i-1][j-1]+1</strong></li>
+<li>否则填写<strong>table[i][j]&#x3D;max(table[i-1][j], table[i][j-1])</strong><br>表格中最大值即为最长公共子序列的长度，时间复杂度为O(m*n)。</li>
+</ul>
+<h3 id="3-代码实现-1"><a href="#3-代码实现-1" class="headerlink" title="3.代码实现"></a>3.代码实现</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX(a, b) (a) &gt; (b) ? (a) : (b)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回两个字符串 a 和 b 的最长公共子序列的长度</span></span><br><span class="line"><span class="comment">// 例如 &quot;abcbcde&quot; 和 &quot;acabdef&quot; 的最长公共子序列是 &quot;acbde&quot; ，长度为 5</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">LongestCommonSubsequence</span><span class="params">(<span class="type">char</span> *a, <span class="type">int</span> a_length, <span class="type">char</span> *b, <span class="type">int</span> b_length)</span> &#123;</span><br><span class="line">    <span class="type">int</span> table[a_length][b_length];</span><br><span class="line">    <span class="type">int</span> max = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; a_length; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; b_length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a[i] == b[j]) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i &gt;= <span class="number">1</span> &amp;&amp; j &gt;= <span class="number">1</span>)</span><br><span class="line">                    table[i][j] = table[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    table[i][j] = <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (i &gt;= <span class="number">1</span> &amp;&amp; j &gt;= <span class="number">1</span>)</span><br><span class="line">                    table[i][j] = MAX(table[i - <span class="number">1</span>][j], table[i][j - <span class="number">1</span>]);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (i &lt;= <span class="number">0</span> &amp;&amp; j &gt;= <span class="number">1</span>)</span><br><span class="line">                    table[i][j] = table[i][j - <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (i &gt;= <span class="number">1</span> &amp;&amp; j &lt;= <span class="number">0</span>)</span><br><span class="line">                    table[i][j] = table[i - <span class="number">1</span>][j];</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    table[i][j] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (max &lt; table[i][j]) max = table[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </article>
     
@@ -344,7 +363,7 @@
     </li>
     <li class="trm-post-copyright-link">
         <strong>本文链接：</strong>
-        <a id="original-link" href="https://www.hoi3vel.cn/2024/05/31/t-comment-deploy/" title="Hexo博客引入Giscus评论系统">https://www.hoi3vel.cn/2024/05/31/t-comment-deploy/</a>
+        <a id="original-link" href="https://www.hoi3vel.cn/2024/07/06/t-dynamic-programming1/" title="最长公共子串和最长公共子序列">https://www.hoi3vel.cn/2024/07/06/t-dynamic-programming1/</a>
     </li>
     <li class="trm-post-copyright-license">
         <strong>版权声明：</strong>
@@ -363,41 +382,21 @@
         </h5>
     </div>
     
-        <div class="col-lg-6">
-    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
-        <div class="trm-older-publication">
-            
-            <a class="trm-op-top trm-anima-link" href="/2024/07/06/t-dynamic-programming1/">
-                <span class="trm-op-cover">
-                    <img alt="cover" class="no-fancybox trm-light-icon" src="https://img.hoi3vel.cn/config/article_cover_1.webp"> <img alt="cover" class="no-fancybox trm-dark-icon" src="https://img.hoi3vel.cn/config/article_cover_1_dark.webp">
-                </span>
-                <h6 class="trm-op-title">最长公共子串和最长公共子序列</h6>
-            </a>
-            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>24/07/06</li>
-                <li>13:00</li>
-                <li>Tech</li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
     
         <div class="col-lg-6">
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2024/05/29/t-hexo-deploy/">
+            <a class="trm-op-top trm-anima-link" href="/2024/05/31/t-comment-deploy/">
                 <span class="trm-op-cover">
                     <img alt="cover" class="no-fancybox trm-light-icon" src="https://img.hoi3vel.cn/config/article_cover_1.webp"> <img alt="cover" class="no-fancybox trm-dark-icon" src="https://img.hoi3vel.cn/config/article_cover_1_dark.webp">
                 </span>
-                <h6 class="trm-op-title">基于Hexo的静态博客部署至阿里云服务器</h6>
+                <h6 class="trm-op-title">Hexo博客引入Giscus评论系统</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
-                <li>24/05/29</li>
-                <li>17:00</li>
+                <li>24/05/31</li>
+                <li>22:13</li>
                 <li>Tech</li>
             </ul>
         </div>
