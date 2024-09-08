@@ -6,7 +6,7 @@
   <link href="https://www.hoi3vel.cn/atom.xml" rel="self"/>
   
   <link href="https://www.hoi3vel.cn/"/>
-  <updated>2024-07-06T06:46:00.000Z</updated>
+  <updated>2024-09-08T04:00:00.000Z</updated>
   <id>https://www.hoi3vel.cn/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C语言中函数间动态内存的传递</title>
+    <link href="https://www.hoi3vel.cn/2024/09/08/t-dynamic-memory/"/>
+    <id>https://www.hoi3vel.cn/2024/09/08/t-dynamic-memory/</id>
+    <published>2024-09-08T02:23:00.000Z</published>
+    <updated>2024-09-08T04:00:00.000Z</updated>
+    
+    
+    <summary type="html">C语言中动态内存的传递方式总结</summary>
+    
+    
+    
+    <category term="Tech" scheme="https://www.hoi3vel.cn/categories/Tech/"/>
+    
+    
+    <category term="C" scheme="https://www.hoi3vel.cn/tags/C/"/>
+    
+    <category term="Dynamic Memory" scheme="https://www.hoi3vel.cn/tags/Dynamic-Memory/"/>
+    
+  </entry>
   
   <entry>
     <title>最长公共子串和最长公共子序列</title>
